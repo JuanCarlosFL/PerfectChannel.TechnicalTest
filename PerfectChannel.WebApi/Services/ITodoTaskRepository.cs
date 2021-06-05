@@ -11,5 +11,7 @@ namespace PerfectChannel.WebApi.Services
         Task<TodoTask> GetTaskByIdAsync(int id);
 
         Task<TodoTask> PostTaskAsync(TodoTask task);
+
+        Task<TodoTask> PutTaskAsync(TodoTask task);
     }
 }

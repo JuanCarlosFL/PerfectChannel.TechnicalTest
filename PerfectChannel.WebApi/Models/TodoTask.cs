@@ -8,6 +8,6 @@ namespace PerfectChannel.WebApi.Models
     public class TodoTask : BaseClass
     {
         public string Description { get; set; }
-        public bool IsCreated { get; set; }
+        public bool IsCompleted { get; set; }
     }
 }

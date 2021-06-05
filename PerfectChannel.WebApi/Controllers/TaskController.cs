@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PerfectChannel.WebApi.Models;
 using PerfectChannel.WebApi.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -42,11 +43,27 @@ namespace PerfectChannel.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<TodoTask>> PostTodoTAsk(TodoTask task)
+        public async Task<ActionResult<TodoTask>> PostTodoTask(TodoTask task)
         {
             var todoTask = await _todoTaskRepository.PostTaskAsync(task);
 
             return Ok(todoTask);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<TodoTask>> PutTodoTask(TodoTask task)
+        {
+            try
+            {
+                var todoTask = await _todoTaskRepository.PutTaskAsync(task);
+                return Ok(todoTask);
+
+            }
+            catch(Exception ex)
+            {
+                throw new Exception();
+            }
+
         }
     }
 }

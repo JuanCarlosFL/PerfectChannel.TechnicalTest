@@ -23,9 +23,18 @@ namespace PerfectChannel.WebApi.Services
         public async Task<TodoTask> PostTaskAsync(TodoTask task)
         {
             await _context.AddAsync(task);
-            var response = await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
-            return await GetTaskByIdAsync(response);
+            return await GetTaskByIdAsync(task.Id);
+        }
+
+        public async Task<TodoTask> PutTaskAsync(TodoTask task)
+        {
+            _context.Entry(task).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return task;
+            
         }
     }
 }
